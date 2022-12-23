@@ -9,6 +9,11 @@ pipeline {
             sh 'docker build -t akshaynr24/nginx:$BUILD_NUMBER .'
             }
         }
+        stage('run') {
+            steps{
+                sh 'docker run -d -p 8000:80 akshaynr24/nginx:$BUILD_NUMBER'
+        }
+    }
 
         stage('login to dockerhub') {
             steps{
@@ -21,10 +26,6 @@ pipeline {
             }
         }
         
-        stage('run') {
-            steps{
-                sh 'docker run -d -p 8000:80 akshaynr24/nginx:$BUILD_NUMBER'
-        }
-    }
+        
 }
 }
