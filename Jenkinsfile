@@ -17,7 +17,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push akshaynr24/nginx'
+                sh 'docker push akshaynr24/nginx:$BUILD_NUMBER'
             }
         }
         
